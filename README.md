@@ -69,3 +69,23 @@ Requisitos do exercício:
    - (**_Opcional_**) Entrega do Código:
      - Se optar por entregar o código, faça o upload em um repositório GitHub
        ou GitLab e compartilhe o link.
+
+#### Observações para os alunos:
+-  Organização do Código: cada componente (Controller, Service, Model) deve
+ser bem documentado e isolado em suas respectivas responsabilidades.
+
+
+- Explicação da estrutura de pastas: inclua uma breve explicação de cada
+pasta e o papel de cada componente no padrão MVC.
+
+
+- Desenho arquitetural: entregue o diagrama UML e/ou C4 Model e/ou outro,
+mostrando a relação entre os componentes da aplicação.
+
+
+#### Resumo dos Entregáveis:
+1. Arquitetura do software (C4 Model/UML/Outro Diagrama no Draw.io).
+2. Estrutura de pastas do projeto MVC.
+3. Explicação da estrutura e dos elementos que comporão o código.
+4. Opcional (código funcionando).
+5. Opcional (persistência funcionando).
