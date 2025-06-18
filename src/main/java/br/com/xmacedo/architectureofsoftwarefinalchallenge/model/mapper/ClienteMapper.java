@@ -12,11 +12,12 @@ public class ClienteMapper {
         clienteResponseDTO.setCpf(cliente.getCpf());
         clienteResponseDTO.setEmail(cliente.getEmail());
         clienteResponseDTO.setTelefone(cliente.getTelefone());
-        clienteResponseDTO.setEndereco(cliente.getEndereco());
         clienteResponseDTO.setComplemento(cliente.getComplemento());
         clienteResponseDTO.setCidade(cliente.getCidade());
         clienteResponseDTO.setEstado(cliente.getEstado());
         clienteResponseDTO.setCep(cliente.getCep());
+        clienteResponseDTO.setNumero(cliente.getNumero());
+        clienteResponseDTO.setBairro(cliente.getBairro());
 
         return clienteResponseDTO;
     }
@@ -28,11 +29,14 @@ public class ClienteMapper {
         cliente.setCpf(clienteRequestDTO.getCpf());
         cliente.setEmail(clienteRequestDTO.getEmail());
         cliente.setTelefone(clienteRequestDTO.getTelefone());
-        cliente.setEndereco(clienteRequestDTO.getEndereco());
         cliente.setComplemento(clienteRequestDTO.getComplemento());
         cliente.setCidade(clienteRequestDTO.getCidade());
         cliente.setEstado(clienteRequestDTO.getEstado());
         cliente.setCep(clienteRequestDTO.getCep());
+        cliente.setEndereco(clienteRequestDTO.getEndereco());
+        cliente.setNumero(clienteRequestDTO.getNumero());
+        cliente.setBairro(clienteRequestDTO.getBairro());
+
         return cliente;
     }
 }

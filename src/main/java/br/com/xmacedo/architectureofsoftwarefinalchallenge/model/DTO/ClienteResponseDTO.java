@@ -1,15 +1,55 @@
 package br.com.xmacedo.architectureofsoftwarefinalchallenge.model.DTO;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@Schema(description = "DTO para respostas contendo informações completas do cliente")
 public class ClienteResponseDTO {
+    @Schema(description = "Identificador único do cliente",
+            example = "1")
     private Long id;
+
+    @Schema(description = "Nome completo do cliente",
+            example = "João da Silva")
     private String nome;
-    private String cpf;
+
+    @Schema(description = "Email do cliente",
+            example = "joao.silva@email.com")
     private String email;
+
+    @Schema(description = "CPF do cliente",
+            example = "***456789**")
+    private String cpf;
+
+    @Schema(description = "Telefone do cliente",
+            example = "(11) 99988-7766")
     private String telefone;
+
+    @Schema(description = "Endereço (logradouro) do cliente",
+            example = "Rua das Flores")
     private String endereco;
+
+    @Schema(description = "Número do endereço",
+            example = "123")
+    private String numero;
+
+    @Schema(description = "Complemento do endereço (pode ser null se não informado)",
+            example = "Apto 42, Bloco B")
     private String complemento;
+
+    @Schema(description = "Bairro onde o cliente reside",
+            example = "Jardim Primavera")
+    private String bairro;
+
+    @Schema(description = "Cidade onde o cliente reside",
+            example = "São Paulo")
     private String cidade;
+
+    @Schema(description = "Estado (UF) onde o cliente reside",
+            example = "SP")
     private String estado;
+
+    @Schema(description = "CEP formatado do endereço do cliente",
+            example = "01234-567")
     private String cep;
 
     public Long getId() {
@@ -90,5 +130,26 @@ public class ClienteResponseDTO {
 
     public void setCep(String cep) {
         this.cep = cep;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+    public String toString() {
+        return "ClienteResponseDTO [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", email=" + email + ", telefone="
+                + telefone + ", endereco=" + endereco + ", numero=" + numero + ", complemento=" + complemento
+                + ", bairro=" + bairro + ", cidade=" + cidade + ", estado=" + estado + ", cep=" + cep + "]";
     }
 }

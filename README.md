@@ -94,7 +94,8 @@ mostrando a relação entre os componentes da aplicação.
 # Delivery
 
 ### Swagger Documentation
-- [Swagger API](http://localhost:8080/swagger-ui/index.html)
+- Swagger UI: `http://localhost:8080/swagger-ui.html`
+- OpenAPI JSON: `http://localhost:8080/v3/api-docs`
 
 ### How to test
 
@@ -104,16 +105,17 @@ mostrando a relação entre os componentes da aplicação.
 curl --location 'http://localhost:8080/v1/clientes' \
 --header 'Content-Type: application/json' \
 --data '{
-    
     "nome": "Teste com espaco",
-    "cpf": null,
-    "email": null,
-    "telefone": null,
-    "endereco": null,
-    "complemento": null,
-    "cidade": null,
-    "estado": null,
-    "cep": null
+    "cpf": "123585786213",
+    "email": "email@email.com",
+    "telefone":  "51 9 9999 9999",
+    "endereco":  "Endereco ",
+    "numero":  "numero",
+    "complemento":  "complemento",
+    "cidade":  "Porto Alegre",
+    "estado":  "Estado",
+    "cep":  "81273123",
+    "bairro":  "Bairro"
 }'
 ```
 
@@ -125,14 +127,16 @@ curl --location 'http://localhost:8080/v1/clientes' \
 --data '{
     "id": 1,
     "nome": "Teste com espaco",
-    "cpf": null,
-    "email": null,
-    "telefone": null,
-    "endereco": null,
-    "complemento": null,
-    "cidade": null,
-    "estado": null,
-    "cep": null
+    "cpf": "",
+    "email": "",
+    "telefone":  "",
+    "endereco":  "",
+    "numero":  "",
+    "complemento":  "",
+    "cidade":  "",
+    "estado":  "",
+    "cep":  "",
+    "bairro":  ""
 }'
 ```
 
