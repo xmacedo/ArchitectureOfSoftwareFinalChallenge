@@ -1,0 +1,167 @@
+@startuml ClienteAPI
+
+package "Controller Layer" {
+    class ClienteController {
+        - clienteService: ClienteService
+        + listarTodos(): ResponseEntity<?>
+        + buscarPorID(id: Long): ResponseEntity<?>
+        + buscarPorNome(nome: String): ResponseEntity<?>
+        + createClient(clientRequestDTO: ClienteRequestDTO): ResponseEntity<?>
+        + contarClientes(): ResponseEntity<?>
+        + deletarCliente(id: Long): ResponseEntity<?>
+    }
+}
+
+package "Service Layer" {
+    class ClienteService {
+        + findAll(): List<ClienteResponseDTO>
+        + findById(id: Long): Optional<ClienteResponseDTO>
+        + findByName(nome: String): List<ClienteResponseDTO>
+        + createOrSave(clienteRequestDTO: ClienteRequestDTO): ClienteResponseDTO
+        + countingClients(): Long
+        + deleteClientById(id: Long): void
+    }
+}
+
+package "DTO Layer" {
+    class ClienteRequestDTO {
+        - nome: String
+        - email: String
+        - cpf: String
+        - telefone: String
+        - endereco: String
+        - numero: String
+        - complemento: String
+        - bairro: String
+        - cidade: String
+        - estado: String
+        - cep: String
+        + getNome(): String
+        + setNome(nome: String): void
+        + getEmail(): String
+        + setEmail(email: String): void
+        + getCpf(): String
+        + setCpf(cpf: String): void
+        + getTelefone(): String
+        + setTelefone(telefone: String): void
+        + getEndereco(): String
+        + setEndereco(endereco: String): void
+        + getNumero(): String
+        + setNumero(numero: String): void
+        + getComplemento(): String
+        + setComplemento(complemento: String): void
+        + getBairro(): String
+        + setBairro(bairro: String): void
+        + getCidade(): String
+        + setCidade(cidade: String): void
+        + getEstado(): String
+        + setEstado(estado: String): void
+        + getCep(): String
+        + setCep(cep: String): void
+    }
+
+    class ClienteResponseDTO {
+        - id: Long
+        - nome: String
+        - email: String
+        - cpf: String
+        - telefone: String
+        - endereco: String
+        - numero: String
+        - complemento: String
+        - bairro: String
+        - cidade: String
+        - estado: String
+        - cep: String
+        - dataCriacao: String
+        - dataAtualizacao: String
+        + getId(): Long
+        + setId(id: Long): void
+        + getNome(): String
+        + setNome(nome: String): void
+        + getEmail(): String
+        + setEmail(email: String): void
+        + getCpf(): String
+        + setCpf(cpf: String): void
+        + getTelefone(): String
+        + setTelefone(telefone: String): void
+        + getEndereco(): String
+        + setEndereco(endereco: String): void
+        + getNumero(): String
+        + setNumero(numero: String): void
+        + getComplemento(): String
+        + setComplemento(complemento: String): void
+        + getBairro(): String
+        + setBairro(bairro: String): void
+        + getCidade(): String
+        + setCidade(cidade: String): void
+        + getEstado(): String
+        + setEstado(estado: String): void
+        + getCep(): String
+        + setCep(cep: String): void
+        + getDataCriacao(): String
+        + setDataCriacao(dataCriacao: String): void
+        + getDataAtualizacao(): String
+        + setDataAtualizacao(dataAtualizacao: String): void
+        + toString(): String
+    }
+}
+
+package "Entity Layer" {
+    class Cliente {
+        - id: Long
+        - nome: String
+        - email: String
+        - cpf: String
+        - telefone: String
+        - endereco: String
+        - numero: String
+        - complemento: String
+        - bairro: String
+        - cidade: String
+        - estado: String
+        - cep: String
+        - dataCriacao: LocalDateTime
+        - dataAtualizacao: LocalDateTime
+    }
+}
+
+package "Repository Layer" {
+    interface ClienteRepository {
+        + findByNomeContainingIgnoreCase(nome: String): List<Cliente>
+        + count(): Long
+    }
+}
+
+package "Configuration" {
+    class OpenAPIConfig {
+        + customOpenAPI(): OpenAPI
+    }
+}
+
+' Relacionamentos
+ClienteController --> ClienteService : uses
+ClienteController ..> ClienteRequestDTO : receives
+ClienteController ..> ClienteResponseDTO : returns
+
+ClienteService --> ClienteRepository : uses
+ClienteService ..> Cliente : manipulates
+ClienteService ..> ClienteRequestDTO : receives
+ClienteService ..> ClienteResponseDTO : returns
+
+ClienteRepository --> Cliente : manages
+
+' Anotações
+note right of ClienteController : @RestController\n@RequestMapping("/v1/clientes")\n@Tag(name = "Clientes")
+
+note right of ClienteService : @Service\n@Transactional
+
+note right of ClienteRepository : @Repository\nJpaRepository interface
+
+note right of ClienteRequestDTO : @Schema\nValidation annotations:\n@NotBlank, @Email, @Pattern
+
+note right of ClienteResponseDTO : @Schema\nResponse DTO with\nformatted data
+
+note right of Cliente : @Entity\n@Table(name = "clientes")\nJPA Entity
+
+@enduml

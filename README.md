@@ -97,6 +97,30 @@ mostrando a relação entre os componentes da aplicação.
 - Swagger UI: `http://localhost:8080/swagger-ui.html`
 - OpenAPI JSON: `http://localhost:8080/v3/api-docs`
 
+### Diagram
+![DiagramFinalChallenge.png](diagrams/DiagramFinalChallenge.png)
+
+### MVC Folder and Component Structure
+
+```
+src/
+├── main/
+│   ├── java/
+│   │   └── com/exemplo/finalchallenge/
+│   │       ├── controller/          # Camada de Apresentação (Controller)
+│   │       ├── view/                # Camada de Visualização (View)
+│   │       ├── model/               # Camada de Dados (Model)
+│   │       │   ├── entity/          # Entidades JPA
+│   │       │   └── DTO/             # Data Transfer Objects
+│   │       │   └── service/         # Camada de Negócio
+│   │       │   └── mapper/          # Mappers de transformação
+│   │       │   └── repository/      # Camada de Persistência
+│   │       ├── config/              # Configurações
+│   └── resources/
+│       ├── application.properties   # Configurações da aplicação
+└── test/                            # Testes unitários e integração
+```
+
 ### How to test
 
 1. Create clients
