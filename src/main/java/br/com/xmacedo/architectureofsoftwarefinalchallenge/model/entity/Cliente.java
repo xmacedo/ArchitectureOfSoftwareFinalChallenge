@@ -1,4 +1,4 @@
-package br.com.xmacedo.architectureofsoftwarefinalchallenge.model;
+package br.com.xmacedo.architectureofsoftwarefinalchallenge.model.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

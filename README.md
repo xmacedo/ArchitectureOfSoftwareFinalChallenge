@@ -89,3 +89,29 @@ mostrando a relação entre os componentes da aplicação.
 3. Explicação da estrutura e dos elementos que comporão o código.
 4. Opcional (código funcionando).
 5. Opcional (persistência funcionando).
+
+---
+# Delivery
+
+### How to test
+
+1. Save clients
+
+```
+curl --location 'http://localhost:8080/clientes' \
+--header 'Content-Type: application/json' \
+--data '{
+    
+    "nome": "Teste com espaco",
+    "cpf": null,
+    "email": null,
+    "telefone": null,
+    "endereco": null,
+    "complemento": null,
+    "cidade": null,
+    "estado": null,
+    "cep": null
+}'
+```
+
+2

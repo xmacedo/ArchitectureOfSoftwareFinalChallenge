@@ -1,7 +1,9 @@
 package br.com.xmacedo.architectureofsoftwarefinalchallenge.controller;
 
-import br.com.xmacedo.architectureofsoftwarefinalchallenge.model.Cliente;
-import br.com.xmacedo.architectureofsoftwarefinalchallenge.service.ClienteService;
+import br.com.xmacedo.architectureofsoftwarefinalchallenge.model.DTO.ClienteResponseDTO;
+import br.com.xmacedo.architectureofsoftwarefinalchallenge.model.entity.Cliente;
+import br.com.xmacedo.architectureofsoftwarefinalchallenge.model.DTO.ClienteRequestDTO;
+import br.com.xmacedo.architectureofsoftwarefinalchallenge.model.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,7 +23,7 @@ public class ClienteController {
 
     @GetMapping
     public ResponseEntity<?> listarTodos() {
-        List<Cliente> clientes = clienteService.listarTodos();
+        List<ClienteResponseDTO> clientes = clienteService.findAll();
         if (clientes.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
@@ -30,14 +32,16 @@ public class ClienteController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> buscarPorID(@PathVariable Long id) {
-        return clienteService.buscarPorID(id)
+        return clienteService.findById(id)
                 .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+                .orElse(ResponseEntity
+                        .notFound()
+                        .build());
     }
 
     @GetMapping("/nome/{nome}")
     public ResponseEntity<?> buscarPorNome(@PathVariable String nome) {
-        List<Cliente> clientes = clienteService.buscarPorNome(nome);
+        List<ClienteResponseDTO> clientes = clienteService.findByName(nome);
         if (clientes.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
@@ -45,20 +49,20 @@ public class ClienteController {
     }
 
     @PostMapping
-    public ResponseEntity<?> salvarCliente(@RequestBody Cliente cliente) {
-        Cliente clienteSalvo = clienteService.salvar(cliente);
+    public ResponseEntity<?> createClient(@RequestBody ClienteRequestDTO clientRequestDTO) {
+        ClienteResponseDTO clienteSalvo = clienteService.createOrSave(clientRequestDTO);
         return ResponseEntity.ok(clienteSalvo);
     }
 
     @GetMapping("/contar")
     public ResponseEntity<?> contarClientes() {
-        return ResponseEntity.ok(clienteService.contarClientes());
+        return ResponseEntity.ok(clienteService.countingClients());
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deletarCliente(@PathVariable Long id) {
-        if (clienteService.buscarPorID(id).isPresent()) {
-            clienteService.deletar(id);
+        if (clienteService.findById(id).isPresent()) {
+            clienteService.deleteClientById(id);
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.notFound().build();
