@@ -1,8 +1,7 @@
 package br.com.xmacedo.architectureofsoftwarefinalchallenge.controller;
 
-import br.com.xmacedo.architectureofsoftwarefinalchallenge.model.DTO.ClienteResponseDTO;
-import br.com.xmacedo.architectureofsoftwarefinalchallenge.model.entity.Cliente;
 import br.com.xmacedo.architectureofsoftwarefinalchallenge.model.DTO.ClienteRequestDTO;
+import br.com.xmacedo.architectureofsoftwarefinalchallenge.model.DTO.ClienteResponseDTO;
 import br.com.xmacedo.architectureofsoftwarefinalchallenge.model.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/clientes")
+@RequestMapping("/v1/clientes")
 public class ClienteController {
     @Autowired
     private ClienteService clienteService;

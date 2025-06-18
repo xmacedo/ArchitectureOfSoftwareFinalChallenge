@@ -93,12 +93,15 @@ mostrando a relação entre os componentes da aplicação.
 ---
 # Delivery
 
+### Swagger Documentation
+- [Swagger API](http://localhost:8080/swagger-ui/index.html)
+
 ### How to test
 
-1. Save clients
+1. Create clients
 
 ```
-curl --location 'http://localhost:8080/clientes' \
+curl --location 'http://localhost:8080/v1/clientes' \
 --header 'Content-Type: application/json' \
 --data '{
     
@@ -114,4 +117,47 @@ curl --location 'http://localhost:8080/clientes' \
 }'
 ```
 
-2
+2. Save clients
+
+```
+curl --location 'http://localhost:8080/v1/clientes' \
+--header 'Content-Type: application/json' \
+--data '{
+    "id": 1,
+    "nome": "Teste com espaco",
+    "cpf": null,
+    "email": null,
+    "telefone": null,
+    "endereco": null,
+    "complemento": null,
+    "cidade": null,
+    "estado": null,
+    "cep": null
+}'
+```
+
+3. List All clients
+
+```
+curl --location 'http://localhost:8080/v1/clientes'
+```
+
+4. Find by ID
+```
+curl --location 'http://localhost:8080/v1/clientes/1'
+```
+
+5. Find by Name, example: Teste
+```   
+curl --location 'http://localhost:8080/v1/clientes/nome/Teste'
+```
+
+6. Counting number of Clients
+```
+curl --location 'http://localhost:8080/v1/clientes/contar'
+```
+
+7. Remove client
+```
+curl --location --request DELETE 'http://localhost:8080/v1/clientes/1'
+```

@@ -36,3 +36,6 @@ mvnw
 
 ### VS Code ###
 .vscode/
+
+### h2 DB ###
+data/
